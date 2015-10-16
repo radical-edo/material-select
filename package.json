@@ -1,0 +1,33 @@
+{
+  "name": "react-boilerplate",
+  "version": "1.0.0",
+  "description": "React.js gulp setup",
+  "engines": {
+    "node": ">=4.2.1",
+    "npm": ">=3.3.8"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radical-edo/react-boilerplate.git"
+  },
+  "keywords": [
+    "react.js",
+    "es6",
+    "babelify",
+    "boilerplate",
+    "gulp"
+  ],
+  "author": {
+    "nickname": "radical-edo",
+    "name": "Mateusz Barczak",
+    "email": "radical.3do@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/radical-edo/react-boilerplate/issues"
+  },
+  "homepage": "https://github.com/radical-edo/react-boilerplate#readme"
+}
