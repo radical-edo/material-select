@@ -7,7 +7,8 @@
     "npm": ">=3.3.8"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gulp": "bin/gulp"
   },
   "repository": {
     "type": "git",
@@ -29,5 +30,32 @@
   "bugs": {
     "url": "https://github.com/radical-edo/react-boilerplate/issues"
   },
-  "homepage": "https://github.com/radical-edo/react-boilerplate#readme"
+  "homepage": "https://github.com/radical-edo/react-boilerplate#readme",
+  "devDependencies": {
+    "babelify": "^6.3.0",
+    "browserify": "^11.2.0",
+    "colors": "^1.1.2",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-inject": "^3.0.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-sass": "^2.0.4",
+    "gulp-watch": "^4.3.5",
+    "lodash": "^3.10.1",
+    "main-bower-files": "^2.9.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.4.0"
+  },
+  "babelify": {
+    "transform": [
+      "babelify"
+    ]
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.5",
+    "font-awesome": "^4.4.0",
+    "lodash": "^3.10.1",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0"
+  }
 }
