@@ -1,15 +1,13 @@
 'use strict';
 
-// general dependencies
+var _ = require('lodash');
 var gulp = require('gulp');
-var config = require('../config');
 var concat = require('gulp-concat');
 var inject = require('gulp-inject');
-var _ = require('lodash');
 var bowerFiles = require('main-bower-files');
-
-// scss dependencies
 var sass = require('gulp-sass');
+
+var config = require('../config');
 
 function buildStyles() {
   return gulp.src(config.paths.scss)
@@ -18,9 +16,7 @@ function buildStyles() {
 }
 
 function buildVendorStyles() {
-  return gulp.src(bowerFiles(_.merge({
-    filter: /.*\.css$/
-  }, config.bowerFiles)))
+  return gulp.src(bowerFiles(config.bowerFiles))
   .pipe(concat('vendor.css'))
   .pipe(gulp.dest(config.paths.dest));
 }

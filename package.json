@@ -50,6 +50,14 @@
       "babelify"
     ]
   },
+  "overrides": {
+    "bootstrap": {
+      "main": "dist/css/bootstrap.css"
+    },
+    "font-awesome": {
+      "main": "css/font-awesome.css"
+    }
+  },
   "dependencies": {
     "bootstrap": "^3.3.5",
     "font-awesome": "^4.4.0",
