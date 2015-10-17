@@ -1,5 +1,1 @@
-require('./gulp')([
-  'bundle',
-  'build',
-  'watch',
-]);
+require('./gulp')();
