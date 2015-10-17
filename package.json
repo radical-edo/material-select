@@ -41,7 +41,6 @@
     "gulp-notify": "^2.2.0",
     "gulp-sass": "^2.0.4",
     "gulp-watch": "^4.3.5",
-    "lodash": "^3.10.1",
     "main-bower-files": "^2.9.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.4.0"
