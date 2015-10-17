@@ -5,15 +5,15 @@ var watch = require('gulp-watch');
 var config = require('../config');
 var _ = require('lodash');
 
-function bundle() {
-  gulp.start('bundle');
-}
-
-function build() {
-  gulp.start('build');
+function run(task) {
+  return function () {
+    gulp.start(task);
+  };
 }
 
 module.exports = function () {
-  build();
-  return watch(config.paths.watchJsx, bundle);
+  gulp.start('build');
+  watch(config.paths.watchApp, run('bundle'));
+  watch(config.paths.watchStyles, run('styles'));
+  watch(config.paths.watchAssets, run('assets'));
 };

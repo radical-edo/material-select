@@ -13,8 +13,9 @@ module.exports = {
   },
   paths: {
     jsx: 'source/app/app.jsx',
-    watchJsx: 'source/app/**/*.jsx',
-    watchScss: 'source/styles/**/*.(scss|css)',
+    watchApp: 'source/app/**/*.(jsx|js)',
+    watchStyles: 'source/styles/**/*.(scss|css)',
+    watchAssets: 'source/assets/**/*.*',
     index: 'source/index.html',
     dest: dest,
     scss: 'source/styles/app.scss',
