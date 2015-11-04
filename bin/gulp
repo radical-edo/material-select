@@ -6,4 +6,4 @@ if [ -z $task ]; then
   task="watch"
 fi
 
-./node_modules/.bin/gulp $task
+NODE_ENV=development ./node_modules/.bin/gulp $task
