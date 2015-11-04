@@ -1,6 +1,7 @@
 var dest = 'build';
 
-module.exports = {
+var config = {
+  env: {},
   inject: {
     ignorePath: dest,
     addRootSlash: false
@@ -22,3 +23,15 @@ module.exports = {
     assets: 'source/assets/**/*.*',
   },
 };
+
+function checkEnv(env) {
+  return env === process.env.NODE_ENV;
+}
+
+Object.defineProperty(config.env, 'production', {
+  get: function () {
+    return checkEnv('production');
+  }
+});
+
+module.exports = config;
