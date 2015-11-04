@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+task="build"
+
+NODE_ENV=production ./node_modules/.bin/gulp $task
