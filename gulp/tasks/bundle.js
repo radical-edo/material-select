@@ -53,7 +53,9 @@ function buildStyles() {
 }
 
 function buildVendorStyles() {
-  return gulp.src(bowerFiles(config.bowerFiles))
+  return gulp.src(bowerFiles(_.merge({
+    filter: /.+\.css$/
+  }, config.bowerFiles)))
     .pipe(concat('vendor.css'))
     .pipe(config.env.production && minifyCss() || util.noop())
     .pipe(gulp.dest(config.paths.dest));
