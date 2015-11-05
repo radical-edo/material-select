@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dist": "bin/dist",
-    "gulp": "bin/gulp"
+    "start": "bin/gulp"
   },
   "repository": {
     "type": "git",
