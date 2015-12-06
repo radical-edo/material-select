@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "React.js gulp setup",
   "engines": {
-    "node": ">=4.2.1",
+    "node": ">=5.1.1",
     "npm": ">=3.3.8"
   },
   "scripts": {
@@ -54,17 +54,7 @@
       "babelify"
     ]
   },
-  "overrides": {
-    "bootstrap": {
-      "main": "dist/css/bootstrap.css"
-    },
-    "font-awesome": {
-      "main": "css/font-awesome.css"
-    }
-  },
   "dependencies": {
-    "bootstrap": "^3.3.5",
-    "font-awesome": "^4.4.0",
     "lodash": "^3.10.1",
     "react": "^0.14.0",
     "react-dom": "^0.14.0"

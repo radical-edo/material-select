@@ -5,8 +5,6 @@ var inject = require('gulp-inject');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var watchify = require('watchify');
-var bowerFiles = require('main-bower-files');
-var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var _ = require('lodash');
 var buffer = require('vinyl-buffer');
@@ -45,26 +43,8 @@ function buildApp () {
     .pipe(gulp.dest(config.paths.dest));
 }
 
-function buildStyles() {
-  return gulp.src(config.paths.scss)
-    .pipe(sass().on('error', sass.logError))
-    .pipe(config.env.production && minifyCss() || util.noop())
-    .pipe(gulp.dest(config.paths.dest));
-}
-
-function buildVendorStyles() {
-  return gulp.src(bowerFiles(_.merge({
-    filter: /.+\.css$/
-  }, config.bowerFiles)))
-    .pipe(concat('vendor.css'))
-    .pipe(config.env.production && minifyCss() || util.noop())
-    .pipe(gulp.dest(config.paths.dest));
-}
-
 module.exports = function bundle() {
   return gulp.src(config.paths.index)
-    .pipe(inject(buildVendorStyles(), _.merge({ name: 'vendor' }, config.inject)))
-    .pipe(inject(buildStyles(), config.inject))
     .pipe(inject(buildApp(), config.inject))
     .pipe(gulp.dest(config.paths.dest));
 };
