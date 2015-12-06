@@ -77,11 +77,10 @@ class MaterialSelect extends React.Component {
   }
 
   onActionSelect(ev, id, _ev, item) {
-    let { list, selectedItem } = this.state;
-    list.state = 'hidden';
-    list.height = 0;
+    let { selectedItem } = this.state;
     selectedItem = item;
-    this.setState({ list, selectedItem })
+    this.hide();
+    this.setState({ selectedItem })
   }
 
   constructor(props) {
