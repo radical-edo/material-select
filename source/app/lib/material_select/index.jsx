@@ -18,6 +18,7 @@ class MaterialSelect extends React.Component {
           name="material-select_current"
           readOnly={true}
           value={this.state.selectedItem.text}
+          onBlur={this.onAction('blur')}
           onFocus={this.onAction('focus')}
         />
         <div ref="list" style={[styles.list.box,
@@ -55,6 +56,17 @@ class MaterialSelect extends React.Component {
     return (...args) => {
       this[`onAction${_.capitalize(name)}`].apply(this, args.concat(params));
     };
+  }
+
+  onActionBlur(ev) {
+    this.hide();
+  }
+
+  hide() {
+    const { list } = this.state;
+    list.state = 'hidden';
+    list.height = 0;
+    this.setState({ list });
   }
 
   onActionFocus(ev) {
