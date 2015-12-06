@@ -48,7 +48,7 @@ class MaterialSelect extends React.Component {
     });
   }
 
-  getListHeight(options = {}) {
+  getListHeight() {
     let listHeight = 0;
     if ('visible' == this.state.list.state) {
       listHeight += this.itemHeight * this.props.items.length;
