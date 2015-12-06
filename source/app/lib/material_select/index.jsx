@@ -33,11 +33,15 @@ class MaterialSelect extends React.Component {
 
   renderItems() {
     return this.props.items.map(item => {
+      const itemStyles = [styles.item.common];
+      if (item.value == this.state.selectedItem.value) {
+        itemStyles.push(styles.item.selected);
+      }
       return (
         <div
           key={item.text}
           onClick={this.onAction('select', item)}
-          style={[styles.item]}>
+          style={itemStyles}>
           <span>{item.text}</span>
         </div>
       );
@@ -96,13 +100,13 @@ class MaterialSelect extends React.Component {
   componentDidMount() {
     const list = findDOMNode(this.refs.list);
     this.itemHeight = Math.floor(list.offsetHeight / this.props.items.length)
-    console.log(this.itemHeight, this.props.items.length, list.offsetHeight);
   }
 
 }
 
 const white = '#fff';
 const grey = color(white).darken(.2).hexString();
+const plum = '#AF0F6A';
 
 const styles = {
   list: {
@@ -115,9 +119,11 @@ const styles = {
       transition: 'all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms'
     },
     visible: {
+      visibility: 'visible',
       opacity: 1
     },
     hidden: {
+      visibility: 'hidden',
       opacity: 0
     }
   },
@@ -125,8 +131,14 @@ const styles = {
     display: 'inline-block'
   },
   item: {
-    textAlign: 'center',
-    padding: '5px 0'
+    selected: {
+      color: plum,
+      backgroundColor: color(grey).lighten(.05).hexString()
+    },
+    common: {
+      textAlign: 'center',
+      padding: '5px 0'
+    }
   }
 }
 
