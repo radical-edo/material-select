@@ -8,7 +8,10 @@ import _ from 'lodash';
 
 class MaterialSelect extends React.Component {
   render() {
-    console.log(this.state.list);
+    let height = { height: `${this.getListHeight()}px` };
+    if (null == this.itemHeight) {
+      height = {};
+    }
     return (
       <div style={[styles.wrapper]}>
         <input type="text"
@@ -17,9 +20,9 @@ class MaterialSelect extends React.Component {
           value={this.state.selectedItem.text}
           onFocus={this.onAction('focus')}
         />
-        <div ref="listContainer" style={[styles.list.box,
+        <div ref="list" style={[styles.list.box,
           styles.list.effects,
-          { height: `${this.state.list.height}px` },
+          height,
           styles.list[this.state.list.state]]}>
           {this.renderItems()}
         </div>
@@ -40,6 +43,14 @@ class MaterialSelect extends React.Component {
     });
   }
 
+  getListHeight(options = {}) {
+    let listHeight = 0;
+    if ('visible' == this.state.list.state) {
+      listHeight += this.itemHeight * this.props.items.length;
+    }
+    return listHeight;
+  }
+
   onAction(name, ...params) {
     return (...args) => {
       this[`onAction${_.capitalize(name)}`].apply(this, args.concat(params));
@@ -49,7 +60,7 @@ class MaterialSelect extends React.Component {
   onActionFocus(ev) {
     const list = this.state.list;
     list.state = 'visible';
-    list.height = findDOMNode(this.refs.listContainer).scrollHeight;
+    list.height = this.getListHeight();
     this.setState({ list });
   }
 
@@ -65,12 +76,18 @@ class MaterialSelect extends React.Component {
     super(props);
     this.state = {
       list: {
-        height: 0,
         state: 'hidden'
       },
       selectedItem: _.find(this.props.items, item => item.value == props.selectedItem) || _.first(this.props.items)
     };
   }
+
+  componentDidMount() {
+    const list = findDOMNode(this.refs.list);
+    this.itemHeight = Math.floor(list.offsetHeight / this.props.items.length)
+    console.log(this.itemHeight, this.props.items.length, list.offsetHeight);
+  }
+
 }
 
 const white = '#fff';
@@ -98,8 +115,7 @@ const styles = {
   },
   item: {
     textAlign: 'center',
-    padding: '5px',
-    borderBottom: `1px solid ${grey}`
+    padding: '5px 0'
   }
 }
 
