@@ -133,7 +133,6 @@ const styles = {
   item: {
     selected: {
       color: plum,
-      backgroundColor: color(grey).lighten(.05).hexString()
     },
     common: {
       textAlign: 'center',
