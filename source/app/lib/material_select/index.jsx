@@ -8,6 +8,7 @@ import _ from 'lodash';
 
 class MaterialSelect extends React.Component {
   render() {
+    const styles = _.merge({}, this.props.style, defaultStyles);
     let height = { height: `${this.getListHeight()}px` };
     if (null == this.itemHeight) { // this is done for the componentDidMount method, it can calculate the height
       height = {};
@@ -25,13 +26,13 @@ class MaterialSelect extends React.Component {
           styles.list.effects,
           height,
           styles.list[this.state.list.state]]}>
-          {this.renderItems()}
+          {this.renderItems(styles)}
         </div>
       </div>
     );
   }
 
-  renderItems() {
+  renderItems(styles) {
     return this.props.items.map(item => {
       const itemStyles = [styles.item.common];
       if (item.value == this.state.selectedItem.value) {
@@ -109,7 +110,7 @@ const white = '#fff';
 const grey = color(white).darken(.2).hexString();
 const plum = '#AF0F6A';
 
-const styles = {
+const defaultStyles = {
   list: {
     box: {
       boxShadow: `0px 0px 10px 3px ${grey}`,
