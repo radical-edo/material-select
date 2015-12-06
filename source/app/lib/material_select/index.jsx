@@ -9,7 +9,7 @@ import _ from 'lodash';
 class MaterialSelect extends React.Component {
   render() {
     let height = { height: `${this.getListHeight()}px` };
-    if (null == this.itemHeight) {
+    if (null == this.itemHeight) { // this is done for the componentDidMount method, it can calculate the height
       height = {};
     }
     return (
@@ -85,6 +85,7 @@ class MaterialSelect extends React.Component {
     selectedItem = item;
     this.hide();
     this.setState({ selectedItem })
+    this.props.onChange(ev, item);
   }
 
   constructor(props) {
